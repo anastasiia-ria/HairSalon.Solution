@@ -4,22 +4,25 @@
 
 @model HairSalon.Models.Appointment
 
-<h2>Edit</h2>
+<h3>Edit this appointment:</h3>
 
-<h4>Edit this appointment: @Html.DisplayFor(model => model.Date)</h4>
+<h4>@Html.ValueFor(model => model.Date, "{0:dd/MM/yyyy}") at @Html.DisplayFor(model => model.Time) for @Html.DisplayFor(model => model.Client.Name) with @Html.DisplayFor(model => model.Stylist.Name)</h4>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.AppointmentId)
 
   @Html.LabelFor(model => model.Date)
-  @Html.EditorFor(model => model.Date, new { type = "date" })
+  @Html.TextBoxFor(model => model.Date, new { type = "date", required = "required" })
 
   @Html.LabelFor(model => model.Time)
-  @Html.EditorFor(model => model.Time)
+  @Html.DropDownList("Time")
 
   @Html.LabelFor(model => model.Client)
   @Html.DropDownList("ClientId")
+
+  @Html.LabelFor(model => model.Stylist)
+  @Html.DropDownList("StylistId")
 
   <input type="submit" class="button" value="Save" />
 }

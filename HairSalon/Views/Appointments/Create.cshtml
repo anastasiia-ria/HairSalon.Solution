@@ -9,10 +9,10 @@
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Date)
-  @Html.TextBoxFor(model => model.Date, new { type = "date" })
+  @Html.TextBoxFor(model => model.Date, new { type = "date", required = "required" })
 
   @Html.LabelFor(model => model.Time)
-  @Html.TextBoxFor(model => model.Time, new { type = "hour" })
+  @Html.DropDownList("Time")
 
   @Html.LabelFor(model => model.Client)
   @Html.DropDownList("ClientId")

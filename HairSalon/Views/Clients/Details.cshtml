@@ -8,6 +8,21 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
 <h3>@Html.DisplayNameFor(model => model.Stylist): @Html.DisplayFor(model => model.Stylist.Name)<h3></h3>
 
+<h3>Appointments</h3>
+
+@if (@Model.Appointments.Count == 0)
+{
+  <h3>No appointment have been added yet!</h3>
+} 
+
+@foreach (var appointment in Model.Appointments)
+{
+  <li>@Html.ActionLink($"{appointment.Date.ToString("dd MMM yyyy")} at {appointment.Time}", "Details", "Appointments", new { id = appointment.AppointmentId })</li>
+}
+
+<p class="button">@Html.ActionLink("Add new appointment", "CreateForClient", "Appointments", new { clientId = Model.ClientId, stylistId = Model.StylistId })</p>
+<hr />
+
 <div class="button-group">
   <p class="button">@Html.ActionLink("Edit Client", "Edit", new { id = Model.ClientId })</p>
   <p class="button">@Html.ActionLink("Delete Client", "Delete", new { id = Model.ClientId })</p>

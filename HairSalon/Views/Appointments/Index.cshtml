@@ -14,5 +14,5 @@
 
 @foreach (Appointment appointment in Model)
 {
-  <li>@Html.ActionLink($"{appointment.Date} {appointment.Time}", "Details", new { id = appointment.AppointmentId }) | @appointment.Client.Name</li>
+  <li>@Html.ActionLink($"{appointment.Date.ToString("dd MMM yyyy")} {appointment.Time}", "Details", new { id = appointment.AppointmentId }) for @appointment.Client.Name with @appointment.Stylist.Name</li>
 }

@@ -18,7 +18,20 @@
   <li>@Html.ActionLink($"{client.Name}", "Details", "Clients", new { id = client.ClientId })</li>
 }
 
+<h3>Appointments</h3>
+
+@if (@Model.Appointments.Count == 0)
+{
+  <h3>No appointment have been added yet!</h3>
+} 
+
+@foreach (var appointment in Model.Appointments)
+{
+  <li>@Html.ActionLink($"{appointment.Date.ToString("dd MMM yyyy")} at {appointment.Time} for {appointment.Client.Name}", "Details", "Appointments", new { id = appointment.AppointmentId })</li>
+}
+
 <p class="button">@Html.ActionLink("Add new client", "Create", "Clients", new { id = Model.StylistId })</p>
+<p class="button">@Html.ActionLink("Add new appointment", "CreateForStylist", "Appointments", new { id = Model.StylistId })</p>
 <hr />
 <div class="button-group">
   <p class="button">@Html.ActionLink("Edit Stylist", "Edit", new { id = Model.StylistId })</p>
