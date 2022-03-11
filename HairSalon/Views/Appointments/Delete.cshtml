@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Appointment
+
+<h2>Are you sure you want to delete this?</h2>
+
+<h3>@Html.DisplayNameFor(model => model.Date): @Html.DisplayFor(model => model.Date)</h3>
+@using (Html.BeginForm())
+{
+  <input type="submit" class="button" value="Delete" />
+}
+
+<p class="button">@Html.ActionLink("Back to Appointment", "Details", new { id = Model.AppointmentId })</p>

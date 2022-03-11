@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model HairSalon.Models.Appointment
+
+<h2>Appointment Details</h2>
+<h3>@Html.DisplayNameFor(model => model.Date): @Html.ValueFor(model => model.Date, "{0:dd/MM/yyyy}")<h3>
+<h3>@Html.DisplayNameFor(model => model.Time): @Html.DisplayFor(model => model.Time)</h3>
+<h3>@Html.DisplayNameFor(model => model.Client): @Html.DisplayFor(model => model.Client.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Stylist): @Html.DisplayFor(model => model.Stylist.Name)</h3>
+
+<div class="button-group">
+  <p class="button">@Html.ActionLink("Edit Appointment", "Edit", new { id = Model.AppointmentId })</p>
+  <p class="button">@Html.ActionLink("Delete Appointment", "Delete", new { id = Model.AppointmentId })</p>
+</div>
+<p class="button">@Html.ActionLink("Back to Client", "Details", "Clients", new { id = Model.Client.ClientId })</p>
