@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace HairSalon.Controllers
 {
@@ -37,7 +36,6 @@ namespace HairSalon.Controllers
 
     public ActionResult Details(int id)
     {
-      Console.WriteLine(id);
       Stylist thisStylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
       return View(thisStylist);
     }
@@ -52,7 +50,7 @@ namespace HairSalon.Controllers
     {
       _db.Entry(stylist).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = stylist.StylistId });
     }
 
     public ActionResult Delete(int id)

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace HairSalon.Controllers
 {
@@ -23,9 +22,9 @@ namespace HairSalon.Controllers
       return View(model);
     }
 
-    public ActionResult Create()
+    public ActionResult Create(int id)
     {
-      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name");
+      ViewBag.StylistId = new SelectList(_db.Stylists.Where(stylist => stylist.StylistId == id), "StylistId", "Name") { };
       return View();
     }
 
@@ -55,7 +54,7 @@ namespace HairSalon.Controllers
     {
       _db.Entry(client).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = client.StylistId });
     }
 
     public ActionResult Delete(int id)
