@@ -17,6 +17,6 @@
 
   @Html.LabelFor(model => model.Specialty)
   @Html.EditorFor(model => model.Specialty)
-  <input type="submit" value="Save" />
+  <input type="submit" class="button" value="Save" />
 }
-<p>@Html.ActionLink("Back to Stylists", "Index")</p>
+<p class="button">@Html.ActionLink("Back to Stylist", "Index", new { id = Model.StylistId })</p>
