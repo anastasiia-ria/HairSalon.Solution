@@ -31,7 +31,7 @@
 }
 <div class="button-group">
   <p class="button">@Html.ActionLink("Add client", "Create", "Clients", new { id = Model.StylistId })</p>
-  <p class="button">@Html.ActionLink("Add appointment", "CreateForStylist", "Appointments", new { id = Model.StylistId })</p>
+  <p class="button">@Html.ActionLink("Add appointment", "Create", "Appointments", new { error = false, id = Model.StylistId })</p>
 </div>
 <hr />
 <div class="button-group">
