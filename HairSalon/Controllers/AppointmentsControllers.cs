@@ -17,7 +17,7 @@ namespace HairSalon.Controllers
     }
     public ActionResult Index()
     {
-      List<Appointment> model = _db.Appointments.Include(appointment => appointment.Client).ToList();
+      List<Appointment> model = _db.Appointments.Include(appointment => appointment.Client).OrderBy(appointment => appointment.Date).ToList();
       return View(model);
     }
     private List<SelectListItem> getTimes()
@@ -34,29 +34,13 @@ namespace HairSalon.Controllers
       times.Add(new SelectListItem() { Text = "5:00 PM", Value = "5:00 PM" });
       return times;
     }
-    public ActionResult Create(bool error)
+    public ActionResult Create(bool error, int stylistId, int clientId)
     {
       ViewBag.Time = getTimes();
-      ViewBag.ClientId = new SelectList(_db.Clients, "ClientId", "Name") { };
-      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name") { };
+      ViewBag.ClientId = new SelectList(_db.Clients, "ClientId", "Name", clientId) { };
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name", stylistId) { };
       ViewBag.Error = error;
       return View();
-    }
-
-    public ActionResult CreateForStylist(int id)
-    {
-      ViewBag.Time = getTimes();
-      ViewBag.ClientId = new SelectList(_db.Clients.Where(client => client.StylistId == id), "ClientId", "Name") { };
-      ViewBag.StylistId = new SelectList(_db.Stylists.Where(stylist => stylist.StylistId == id), "StylistId", "Name") { };
-      return View("Create");
-    }
-
-    public ActionResult CreateForClient(int clientId, int stylistId)
-    {
-      ViewBag.Time = getTimes();
-      ViewBag.ClientId = new SelectList(_db.Clients.Where(client => client.ClientId == clientId), "ClientId", "Name") { };
-      ViewBag.StylistId = new SelectList(_db.Stylists.Where(stylist => stylist.StylistId == stylistId), "StylistId", "Name") { };
-      return View("Create");
     }
 
     [HttpPost]
