@@ -75,6 +75,7 @@ namespace HairSalon.Controllers
 
       stylistList = stylistList.Where(stylist => stylist.Name.Contains(parameter));
       var search = stylistList.ToList();
+      ModelState.Clear();
       return View("Index", search);
     }
   }

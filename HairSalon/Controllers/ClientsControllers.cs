@@ -79,6 +79,7 @@ namespace HairSalon.Controllers
 
       clientList = clientList.Where(client => client.Name.Contains(parameter));
       var search = clientList.ToList();
+      ModelState.Clear();
       return View("Index", search);
     }
   }

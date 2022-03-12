@@ -6,6 +6,9 @@
 
 <h4>Add a new appointment</h4>
 
+@if (@ViewBag.Error) {
+  <p class="error">Sorry, this time slot has already been taken. Please, select another one</p>
+}
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Date)
@@ -22,4 +25,7 @@
 
   <input type="submit" class="button" value="Add appointment" class="btn btn-default" />
 }
-<p class="button">@Html.ActionLink("Back to Client", "Details", "Clients", new { id = @ViewBag.ClientId })</p>
+<div class="button-group">
+  <p class="button">@Html.ActionLink("Back to Client", "Details", "Clients", new { id = @ViewBag.ClientId })</p>
+  <p class="button">@Html.ActionLink("Back to Stylist", "Details", "Stylist", new { id = @ViewBag.StylistId })</p>
+</div>

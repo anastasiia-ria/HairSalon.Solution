@@ -1,14 +1,21 @@
 <header>
-  <h1>Eau Claire's Salon</h1>
+  <div class="header">Eau Claire's Salon</div>
   <ul>
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li>@Html.ActionLink("Stylists", "Index", "Stylists")</li>
     <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
     <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
     <li>@using(Html.BeginForm("Search", "Stylists", FormMethod.Post))
-    {
-      @Html.TextBox("parameter", new {Stylist})
-      <input type="submit" value="Search" />
-    }</li>
+      {
+        @Html.TextBox("parameter", null, new {@placeholder = "Search Stylist", @class="box"})
+        <input type="submit" value="&#9906;" class="search-icon"/>
+      }
+    </li>
+    <li>@using(Html.BeginForm("Search", "Clients", FormMethod.Post))
+      {
+        @Html.TextBox("parameter", null, new {@placeholder = "Search Client", @class="box"})
+        <input type="submit" value="&#9906;" class="search-icon"/>
+      }
+    </li>
   </ul>
 </header>
