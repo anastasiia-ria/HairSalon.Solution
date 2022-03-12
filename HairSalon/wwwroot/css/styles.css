@@ -3,10 +3,10 @@ body {
 }
 
 .container {
-  width: 600px;
   margin: auto;
-  margin-top: 150px;
+  margin-top: 190px;
   text-align: center;
+  width: 600px;
 }
 
 a {
@@ -35,6 +35,11 @@ header {
   box-shadow: 2px 2px 2px rgba(196, 191, 191, 0.7);
 }
 
+.header {
+  font-family: "Sacramento", cursive;
+  font-size: 3em;
+}
+
 ul {
   padding: 0;
 }
@@ -42,6 +47,7 @@ ul {
 header ul {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 header li {
@@ -84,6 +90,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 label,
@@ -102,4 +109,45 @@ select {
 
 .button-group button {
   margin: 10px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  transform: rotate(-45deg);
+}
+
+.box {
+  width: 130px;
+  border: 1px solid black;
+  font-size: 0.75em;
+}
+
+.column-header {
+  padding: 10px;
+}
+.row,
+.header-row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  border-left: 1px solid black;
+  width: 603px;
+}
+
+.header-row li {
+  width: 200px;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 3px solid black;
+  color: white;
+  background-color: #333;
+}
+.row li {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 200px;
 }
