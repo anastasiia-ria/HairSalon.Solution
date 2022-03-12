@@ -61,7 +61,7 @@ li {
   cursor: pointer;
   text-align: center;
   padding: 10px 0;
-  margin: 10px;
+  margin: 10px auto;
   width: 240px;
   border: 1px solid black;
   background-color: transparent;
@@ -91,10 +91,15 @@ input,
 select {
   font-size: 1.25em;
   padding: 5px 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .button-group {
   display: flex;
   margin: auto;
   justify-content: center;
+}
+
+.button-group button {
+  margin: 10px;
 }
