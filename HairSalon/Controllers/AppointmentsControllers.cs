@@ -58,7 +58,7 @@ namespace HairSalon.Controllers
     {
       _db.Appointments.Add(appointment);
       _db.SaveChanges();
-      return RedirectToAction("Details", "Clients", new { id = appointment.ClientId });
+      return RedirectToAction("Details", new { id = appointment.AppointmentId });
     }
 
     public ActionResult Details(int id)
@@ -106,7 +106,7 @@ namespace HairSalon.Controllers
       var thisAppointment = _db.Appointments.FirstOrDefault(appointment => appointment.AppointmentId == id);
       _db.Appointments.Remove(thisAppointment);
       _db.SaveChanges();
-      return RedirectToAction("Details", "Clients", new { id = thisAppointment.ClientId });
+      return RedirectToAction("Index");
     }
   }
 }

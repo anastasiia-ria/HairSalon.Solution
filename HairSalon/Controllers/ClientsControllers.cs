@@ -71,5 +71,15 @@ namespace HairSalon.Controllers
       _db.SaveChanges();
       return RedirectToAction("Details", "Stylists", new { id = thisClient.StylistId });
     }
+
+    [HttpPost]
+    public ActionResult Search(string parameter)
+    {
+      var clientList = _db.Clients.AsQueryable();
+
+      clientList = clientList.Where(client => client.Name.Contains(parameter));
+      var search = clientList.ToList();
+      return View("Index", search);
+    }
   }
 }
