@@ -3,6 +3,12 @@
   <ul>
     <li>@Html.ActionLink("Home", "Index", "Home")</li>
     <li>@Html.ActionLink("Stylists", "Index", "Stylists")</li>
-    <li>@Html.ActionLink("Add new appointment", "Create", "Appointments")</li>
+    <li>@Html.ActionLink("Clients", "Index", "Clients")</li>
+    <li>@Html.ActionLink("Appointments", "Index", "Appointments")</li>
+    <li>@using(Html.BeginForm("Search", "Stylists", FormMethod.Post))
+    {
+      @Html.TextBox("parameter", new {Stylist})
+      <input type="submit" value="Search" />
+    }</li>
   </ul>
 </header>
