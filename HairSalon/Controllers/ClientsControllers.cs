@@ -19,12 +19,13 @@ namespace HairSalon.Controllers
     public ActionResult Index()
     {
       List<Client> model = _db.Clients.Include(client => client.Stylist).ToList();
+      ViewBag.StylistCount = _db.Stylists.ToList().Count();
       return View(model);
     }
 
-    public ActionResult Create(int id)
+    public ActionResult Create(int stylistId)
     {
-      ViewBag.StylistId = new SelectList(_db.Stylists.Where(stylist => stylist.StylistId == id), "StylistId", "Name") { };
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "Name", stylistId) { };
       return View();
     }
 

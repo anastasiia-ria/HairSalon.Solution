@@ -18,6 +18,8 @@ namespace HairSalon.Controllers
     public ActionResult Index()
     {
       List<Appointment> model = _db.Appointments.Include(appointment => appointment.Client).OrderBy(appointment => appointment.Date).ToList();
+      ViewBag.StylistCount = _db.Stylists.ToList().Count();
+      ViewBag.ClientCount = _db.Clients.ToList().Count();
       return View(model);
     }
     private List<SelectListItem> getTimes()
